@@ -68,17 +68,22 @@ public class SecurityConfig {
 //        http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
         // *************
 //		return http.authorizeRequests(authorizeRequests -> authorizeRequests
-        http.authorizeRequests(authorizeRequests -> authorizeRequests.antMatchers(AUTH_LIST_SWAGGER).permitAll());
+//        http.authorizeRequests(authorizeRequests -> authorizeRequests.antMatchers(AUTH_LIST_SWAGGER).permitAll());
 //		http.authorizeRequests().antMatchers(AUTH_LIST_SWAGGER).permitAll();
 //        http.authorizeRequests().antMatchers(HttpMethod.POST, AUTH_LIST_USUARIO).permitAll();
-        http.authorizeRequests().anyRequest().permitAll()
+//        http.authorizeRequests().anyRequest().permitAll()
 //		http.authorizeRequests().anyRequest().permitAll()
-                .and().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                /**
-                 * Informando qual provedor de autenticacao usar
-                 */
-                .and().cors().and().csrf();
+                http.authorizeRequests()
+                .antMatchers("/**").permitAll(); // Permite acesso irrestrito a todas as URLs
+//                .anyRequest().permitAll()  // Todas as outras URLs exigem autenticação
+
+        http.authorizeRequests(authorizeRequests -> authorizeRequests.antMatchers(AUTH_LIST_SWAGGER).permitAll());
+
+                http
+                .csrf().disable() // Desativa a proteção CSRF (pode ser necessário para aplicativos que usam apenas APIs)
+                .cors().disable(); // Desativa o controle CORS
+
+//                .and().cors().and().csrf();
 //                .disable();// talvez tenha que ser retirada caso front end nao funcione
 //		).build();
 
