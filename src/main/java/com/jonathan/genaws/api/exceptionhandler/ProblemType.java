@@ -18,6 +18,7 @@ public enum ProblemType {
     private String uri;
 
     ProblemType(String path, String title) {
+
         //TODO usar url atualizada
         this.uri = "https://genaws.up.railway.app" + path;
         this.title = title;
