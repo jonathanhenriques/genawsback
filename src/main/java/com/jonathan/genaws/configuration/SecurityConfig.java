@@ -64,7 +64,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         // habilitando o h2 console no navegador*********************
-        http.headers().frameOptions().disable();
+        http.headers().disable();
+
+
 //        http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
         // *************
 //		return http.authorizeRequests(authorizeRequests -> authorizeRequests
@@ -73,6 +75,7 @@ public class SecurityConfig {
 //        http.authorizeRequests().antMatchers(HttpMethod.POST, AUTH_LIST_USUARIO).permitAll();
 //        http.authorizeRequests().anyRequest().permitAll()
 //		http.authorizeRequests().anyRequest().permitAll()
+                http.authorizeRequests(authorizeRequests -> authorizeRequests.antMatchers(AUTH_LIST_SWAGGER).permitAll());
                 http.authorizeRequests()
                 .antMatchers("/**").permitAll(); // Permite acesso irrestrito a todas as URLs
 //                .anyRequest().permitAll()  // Todas as outras URLs exigem autenticação
