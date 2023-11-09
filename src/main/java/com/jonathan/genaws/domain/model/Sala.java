@@ -24,8 +24,8 @@ public class Sala {
     private Long id;
 
     @Column(name = "NUMERO_SALA", nullable = false, length = 100)
-    @JsonAlias({"numeroeSala", "numerDaSala", "numer_Sala"})
-    private String numeroSala;
+    @JsonAlias({"numeroeSala", "numerDaSala", "numero_sala"})
+    private Long numeroSala;
 
 //    @ManyToMany
 //    @JoinTable(

@@ -32,11 +32,11 @@ public class SwaggerConfiguration {
          */
 
         return new OpenAPI()
-                .info(new Info().title("GenAWSApplication").description("Projeto de API criado para a Generation Brasil e Ifood" +
-                                " para concorrer a uma vaga no bootcamp AWS, aguardo retorno :), Jonathan")
+                .info(new Info().title("GenAWSApplication").description("Projeto de API criado para Generation Brasil" +
+                                " com foco na Formação gratuita no programa AWS Re/Start da Amazon Web Services, aguardo retorno :)")
                         .version("v0.0.1")
-                        .license(new License().name("github").url("https://github.com/jonathanhenriques"))
-                        .contact(new Contact().name("linkedin").url("https://www.linkedin.com/in/jonathanhenriques-/")
+                        .license(new License().name("Repositorios").url("https://github.com/jonathanhenriques"))
+                        .contact(new Contact().name("Jonathan").url("https://www.linkedin.com/in/jonathanhenriques-/")
                                 .email("silva.henriquejonas@gmail.com")))
                 .externalDocs(
                         new ExternalDocumentation().description("Github").url("https://github.com/jonathanhenriques/"));

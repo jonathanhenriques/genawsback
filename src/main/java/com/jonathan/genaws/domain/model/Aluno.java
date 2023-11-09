@@ -34,16 +34,21 @@ public class Aluno {
     private Long idade;
 
     @PositiveOrZero
-    @Column(name = "NOTAPRIMEIROSEMESTRE", nullable = true)
-
+    @Column(name = "NOTA_PRIMEIRO_SEMESTRE", nullable = true)
+    @JsonAlias({"notaPrimeiroSemestre", "nota_Primeiro_Semestre","notaprimeirosemestre",})
     private Long notaPrimeiroSemestre;
 
     @PositiveOrZero
-    @Column(name = "NOTASEGUNDOSEMESTRE", nullable = true)
+    @Column(name = "NOTA_SEGUNDO_SEMESTRE", nullable = true)
+    @JsonAlias({"notaSegundoSemestre", "nota_Segundo_Semestre","nota_segundo_semestre",})
     private Long notaSegundoSemestre;
 
+    @Column(name = "NOME_PROFESSOR", nullable = true)
+    @JsonAlias({"nomeProfessor", "nome_Professor","nomeprofessor",})
     private String nomeProfessor;
 
+    @Size(max = 100, min = 0)
+    @Column(name = "NUMERO_SALA", nullable = true)
     private String numeroSala;
 
 //    @ManyToMany(mappedBy = "alunos")

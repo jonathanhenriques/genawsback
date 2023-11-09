@@ -28,7 +28,7 @@ public class Professor {
     //@Column(name = "nome_professor")
 //@NotBlank
 //@Size(max = 100, min = 3)
-    @Column(name = "NOMEPROFESSOR", nullable = false, length = 100)
+    @Column(name = "NOME_PROFESSOR", nullable = false, length = 100)
     @JsonAlias({"nomeProfessor", "nomeDoProfessor", "nome_Professor"})
     private String nomeProfessor;
 

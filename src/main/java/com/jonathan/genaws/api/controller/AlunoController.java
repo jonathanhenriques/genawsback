@@ -30,10 +30,10 @@ public class AlunoController {
 //    ProfessorService professorService;
 
 
-    @GetMapping(value = "/testar")
-    public String teste(String letras){
-        return "funcionouuuuuuu";
-    }
+//    @GetMapping(value = "/testar")
+//    public String teste(String letras){
+//        return "funcionouuuuuuu";
+//    }
 
 //
 //    @Operation(summary = "buscar nome do professor de um aluno")
@@ -65,7 +65,7 @@ public class AlunoController {
 //        }
 
 
-    @Operation(summary = "buscar todos alunos")
+    @Operation(summary = "listar todos alunos")
     @GetMapping
     public List<Aluno> todos(){
         return alunoService.findAll();
@@ -80,20 +80,20 @@ public class AlunoController {
     }
 
 
-    @Operation(summary = "Cadastra um aluno")
+    @Operation(summary = "Cadastrar um aluno")
     @PostMapping(produces = "application/json;charset=UTF-8")
     public Aluno cadastrar(@Valid @RequestBody Aluno aluno){
         return alunoService.cadastrar(aluno);
     }
 
-    @Operation(summary = "atualiza um aluno")
+    @Operation(summary = "atualizar um aluno")
     @PutMapping(produces = "application/json;charset=UTF-8")
     public Aluno atualizar(@Valid @RequestBody Aluno aluno) {
         return alunoService.atualizar(aluno);
     }
 
 
-    //    @Operation(summary = "Ativar um aluno, inverte o delete lógico")
+        @Operation(summary = "Ativar um aluno, inverte o delete lógico")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping(
             path = "/{id}/ativar"
@@ -105,7 +105,7 @@ public class AlunoController {
         alunoService.ativar(id);
     }
 
-    //    @Operation(summary = "Desativar um aluno, delete lógico")
+        @Operation(summary = "Desativar um aluno, delete lógico")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping(
             path = "/{id}/desativar"

@@ -24,16 +24,18 @@ public class ProfessorController {
 
 
 
-    @GetMapping(value = "/testar")
-    public String teste(String letras){
-        return "funcionouuuuuuu";
-    }
+//    @GetMapping(value = "/testar")
+//    public String teste(String letras){
+//        return "funcionouuuuuuu";
+//    }
 
+    @Operation(summary = "listar todos professores")
     @GetMapping
     public List<Professor> todos(){
         return professorService.findAll();
     }
 
+    @Operation(summary = "buscar por id um professor")
     @GetMapping(value = "/id/{professorId}",
 //            consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = "application/json;charset=UTF-8")
@@ -42,20 +44,20 @@ public class ProfessorController {
     }
 
 
-    @Operation(summary = "Cadastra um professor")
+    @Operation(summary = "Cadastrar um professor")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = "application/json;charset=UTF-8")
     public Professor cadastrar(@Valid @RequestBody Professor professor){
         return professorService.cadastrar(professor);
     }
 
-    @Operation(summary = "atualiza um professor")
+    @Operation(summary = "atualizar um professor")
     @PutMapping(produces = "application/json;charset=UTF-8")
     public Professor atualizar(@Valid @RequestBody Professor professor) {
         return professorService.atualizar(professor);
     }
 
-    //    @Operation(summary = "Ativar um professor, inverte o delete lógico")
+        @Operation(summary = "Ativar um professor, inverte o delete lógico")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping(
             path = "/{id}/ativar"
@@ -67,7 +69,7 @@ public class ProfessorController {
         professorService.ativar(id);
     }
 
-    //    @Operation(summary = "Desativar um professor, delete lógico")
+        @Operation(summary = "Desativar um professor, delete lógico")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping(
             path = "/{id}/desativar"

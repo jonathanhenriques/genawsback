@@ -18,16 +18,18 @@ public class SalaController {
     @Autowired
     private SalaServiceImpl salaService;
 
-    @GetMapping(value = "/testar")
-    public String teste(String letras){
-        return "funcionouuuuuuu";
-    }
+//    @GetMapping(value = "/testar")
+//    public String teste(String letras){
+//        return "funcionouuuuuuu";
+//    }
 
+    @Operation(summary = "listar todas Salas")
     @GetMapping
     public List<Sala> todos(){
         return salaService.findAll();
     }
 
+    @Operation(summary = "buscar por id uma Sala")
     @GetMapping(value = "/id/{salaId}",
 //            consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = "application/json;charset=UTF-8")
@@ -36,7 +38,7 @@ public class SalaController {
     }
 
 
-    @Operation(summary = "Cadastra um Sala")
+    @Operation(summary = "Cadastrar uma Sala")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = "application/json;charset=UTF-8")
     public Sala cadastrar(@Valid @RequestBody Sala sala){
@@ -44,13 +46,13 @@ public class SalaController {
     }
 
 
-    @Operation(summary = "atualiza um sala")
+    @Operation(summary = "atualizar uma sala")
     @PutMapping(produces = "application/json;charset=UTF-8")
     public Sala atualizar(@Valid @RequestBody Sala sala) {
         return salaService.atualizar(sala);
     }
 
-    //    @Operation(summary = "Ativar um Sala, inverte o delete lógico")
+        @Operation(summary = "Ativar uma Sala, inverte o delete lógico")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping(
             path = "/{id}/ativar"
@@ -62,7 +64,7 @@ public class SalaController {
         salaService.ativar(id);
     }
 
-    //    @Operation(summary = "Desativar um Sala, delete lógico")
+        @Operation(summary = "Desativar uma Sala, delete lógico")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping(
             path = "/{id}/desativar"
