@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 import java.util.UUID;
 
@@ -26,7 +27,7 @@ public class Professor {
 
 
     //@Column(name = "nome_professor")
-//@NotBlank
+@NotBlank
 //@Size(max = 100, min = 3)
     @Column(name = "NOME_PROFESSOR", nullable = false, length = 100)
     @JsonAlias({"nomeProfessor", "nomeDoProfessor", "nome_Professor"})

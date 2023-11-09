@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 import java.util.UUID;
 
@@ -23,6 +24,7 @@ public class Sala {
     @Column(name = "ID")
     private Long id;
 
+    @NotNull
     @Column(name = "NUMERO_SALA", nullable = false, length = 100)
     @JsonAlias({"numeroeSala", "numerDaSala", "numero_sala"})
     private Long numeroSala;
