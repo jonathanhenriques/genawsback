@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProfessorServiceImpl {
@@ -49,21 +50,37 @@ public class ProfessorServiceImpl {
     }
 
 
-    public Professor adicionarAlunoAoProfessor(Long professorId, Long alunoId){
+//    public Optional<Professor> encontrarProfessorPorNome(String nomeProfessor) {
+//        return professorRepository.findByNomeProfessorAluno(nomeProfessor);
+//    }
+//    public Professor findByNomeProfessorAluno(String nomeProfessor){
+//        professorRepository.findByNomeProfessor((nomeProfessor))
+//                .orElseThrow(() -> new ProfessorNaoEncontradoException(nomeProfessor.toString()));
+//        return null;
+//    }
 
-        Professor professorExistente = buscarOuFalhar(professorId);
-        Aluno alunoAdicionar = alunoService.buscarOuFalhar(alunoId);
+//    public Professor findByNomeProfessor(Professor nomeProfessor){
+//        professorRepository.findByNomeProfessor((nomeProfessor))
+//                .orElseThrow(() -> new ProfessorNaoEncontradoException(nomeProfessor.toString()));
+//        return null;
+//    }
 
-        if (alunoAdicionar != null) {
-            professorExistente.setAluno(alunoAdicionar);
 
-            alunoAdicionar.getProfessores().add(professorExistente);
-
-            alunoService.atualizar(alunoAdicionar);
-        }
-
-        return professorRepository.save(professorExistente);
-    }
+//    public Professor adicionarAlunoAoProfessor(Long professorId, Long alunoId){
+//
+//        Professor professorExistente = buscarOuFalhar(professorId);
+//        Aluno alunoAdicionar = alunoService.buscarOuFalhar(alunoId);
+//
+//        if (alunoAdicionar != null) {
+//            professorExistente.setAluno(alunoAdicionar);
+//
+//            alunoAdicionar.getProfessores().add(professorExistente);
+//
+//            alunoService.atualizar(alunoAdicionar);
+//        }
+//
+//        return professorRepository.save(professorExistente);
+//    }
 
 
     @Transactional

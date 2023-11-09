@@ -9,9 +9,12 @@ import java.util.List;
 public interface AlunoService {
 
 
+//    Aluno findByNomeProfessorAluno(Aluno nomeProfessor);
+//    Aluno findByNomeProfessor(Aluno nomeProfessor);
+
     public List<Aluno> findAll();
 
-    public List<Aluno> findAllBySala(Sala sala);
+//    public List<Aluno> findAllBySala(Sala sala);
 
     public Aluno buscarOuFalhar(Long alunoId);
 

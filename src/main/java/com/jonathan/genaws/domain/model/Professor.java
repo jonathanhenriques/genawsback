@@ -22,7 +22,7 @@ public class Professor {
     private Long id;
 
     //    private UUID codigo;
-    private String codigo;
+//    private String codigo;
 
 
     //@Column(name = "nome_professor")
@@ -31,6 +31,9 @@ public class Professor {
     @Column(name = "NOMEPROFESSOR", nullable = false, length = 100)
     @JsonAlias({"nomeProfessor", "nomeDoProfessor", "nome_Professor"})
     private String nomeProfessor;
+
+//    @ManyToMany(mappedBy = "professores")
+//    private Set<Sala> salas;
 //
 //    @ManyToOne
 //    @JoinColumn(name = "sala_id")
@@ -55,15 +58,15 @@ public class Professor {
 //    @OneToMany(mappedBy = "professor")
 //    private List<Aluno> alunos;
 
-    @ManyToOne
-    @JoinColumn(name = "aluno_id") // Defina o nome da coluna de chave estrangeira
-    private Aluno aluno;
-
+//    @ManyToOne
+//    @JoinColumn(name = "aluno_id") // Defina o nome da coluna de chave estrangeira
+//    private Aluno aluno;
+//
+////    @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH})
+////    private Set<Aluno> alunos;
+//
 //    @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH})
-//    private Set<Aluno> alunos;
-
-    @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH})
-    private Set<Sala> salas;
+//    private Set<Sala> salas;
 
 
     @Column(name = "IS_ATIVO", nullable = false, columnDefinition = "boolean default true")
@@ -77,9 +80,9 @@ public class Professor {
         this.setIsAtivo(false);
     }
 
-    @PrePersist /*antes de criar o registro este metodo e executado*/
-    private void gerarUUID(){
-        setCodigo(UUID.randomUUID().toString());
-    }
+//    @PrePersist /*antes de criar o registro este metodo e executado*/
+//    private void gerarUUID(){
+//        setCodigo(UUID.randomUUID().toString());
+//    }
 
 }

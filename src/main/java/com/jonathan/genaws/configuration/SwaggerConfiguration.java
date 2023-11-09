@@ -33,7 +33,7 @@ public class SwaggerConfiguration {
 
         return new OpenAPI()
                 .info(new Info().title("GenAWSApplication").description("Projeto de API criado para a Generation Brasil e Ifood" +
-                                " para concorrer a uma vaga no bootcamp AWS, gostaria de ser chamado :), Jonathan")
+                                " para concorrer a uma vaga no bootcamp AWS, aguardo retorno :), Jonathan")
                         .version("v0.0.1")
                         .license(new License().name("github").url("https://github.com/jonathanhenriques"))
                         .contact(new Contact().name("linkedin").url("https://www.linkedin.com/in/jonathanhenriques-/")

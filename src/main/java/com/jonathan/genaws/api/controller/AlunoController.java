@@ -1,5 +1,7 @@
 package com.jonathan.genaws.api.controller;
+import com.jonathan.genaws.domain.exception.ProfessorNaoEncontradoException;
 import com.jonathan.genaws.domain.model.Aluno;
+import com.jonathan.genaws.domain.model.Professor;
 import com.jonathan.genaws.repository.AlunoRepository;
 import com.jonathan.genaws.service.serviceimpl.AlunoServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,17 +26,52 @@ public class AlunoController {
     @Autowired
     AlunoRepository alunoRepository;
 
+//    @Autowired
+//    ProfessorService professorService;
+
 
     @GetMapping(value = "/testar")
     public String teste(String letras){
         return "funcionouuuuuuu";
     }
 
+//
+//    @Operation(summary = "buscar nome do professor de um aluno")
+//    @GetMapping(value = "professor/{nomeProfessor}")
+//    public String findByNomeProfessor(@PathVariable("nomeProfessor") String nomeProfessor){
+//
+//       Professor professorEncontrad = alunoService.findByNomeProfessorAluno(nomeProfessor);
+//        if(professorEncontrad != null){
+//            return  professorEncontrad.getNomeProfessor();
+//        }
+////        return throw new
+//return "Professor não encontrado";
+////        return alunoService.findByNomeProfessor(nomeProfessor);
+//    }
+
+//        @Operation(summary = "buscar nome do professor de um aluno")
+//    @GetMapping(value = "professor/{nomeProfessor}")
+//    public String findByNomeProfessor(@PathVariable("nomeProfessor") String nomeProfessor){
+//            Professor professorBuscado = professorService.findByNomeProfessorAluno(nomeProfessor);
+//
+////        Optional<Professor> professorBuscado = professorService.findByNomeProfessorAluno(nomeProfessor);
+//
+//            // Verifica se o professor foi encontrado
+//            if (professorBuscado != null) {
+//                return professorBuscado.getNomeProfessor();
+//            }
+//
+//            return null;
+//        }
+
+
+    @Operation(summary = "buscar todos alunos")
     @GetMapping
     public List<Aluno> todos(){
         return alunoService.findAll();
     }
 
+    @Operation(summary = "buscar um aluno por id")
     @GetMapping(value = "/id/{alunoId}",
 //            consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = "application/json;charset=UTF-8")

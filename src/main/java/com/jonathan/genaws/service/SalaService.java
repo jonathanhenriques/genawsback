@@ -10,7 +10,7 @@ public interface SalaService {
 
     public List<Sala> findAll();
 
-    public List<Sala> findAllBySala(Sala sala);
+//    public List<Sala> findAllBySala(Sala sala);
 
     public Sala buscarOuFalhar(Long salaId);
 

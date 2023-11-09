@@ -21,7 +21,7 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String codigo;
+//    private String codigo;
 
     @NotBlank
     @Size(max = 100, min = 3)
@@ -41,6 +41,13 @@ public class Aluno {
     @PositiveOrZero
     @Column(name = "NOTASEGUNDOSEMESTRE", nullable = true)
     private Long notaSegundoSemestre;
+
+    private String nomeProfessor;
+
+    private String numeroSala;
+
+//    @ManyToMany(mappedBy = "alunos")
+//    private Set<Sala> salas;
 
 //    @Embedded
 //    private Professor nomeProfessor;
@@ -63,14 +70,14 @@ public class Aluno {
 //    private Set<Sala> salas;
 
 
-    @OneToMany(mappedBy = "aluno")
-    private List<Professor> professores;
-
+//    @OneToMany(mappedBy = "aluno")
+//    private List<Professor> professores;
+//
+////    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH})
+////    private Set<Professor> professores;
+//
 //    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH})
-//    private Set<Professor> professores;
-
-    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH})
-    private Set<Sala> salas;
+//    private Set<Sala> salas;
 
 //    @Embedded
 //    private Sala numeroSala;
@@ -96,9 +103,9 @@ public class Aluno {
         this.setIsAtivo(false);
     }
 
-    @PrePersist /*antes de criar o registro este metodo e executado*/
-    private void gerarUUID(){
-        setCodigo(UUID.randomUUID().toString());
-    }
+//    @PrePersist /*antes de criar o registro este metodo e executado*/
+//    private void gerarUUID(){
+//        setCodigo(UUID.randomUUID().toString());
+//    }
 
 }

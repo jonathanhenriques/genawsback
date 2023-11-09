@@ -8,19 +8,22 @@ import java.util.List;
 public interface ProfessorService {
 
 
-    public List<Professor> findAll();
+//    Professor findByNomeProfessorAluno(String nomeProfessor);
+//    Professor findByNomeProfessor(Professor nomeProfessor);
 
-//    public List<Professor> findAllBySala(Sala sala);
+     List<Professor> findAll();
 
-    public Professor buscarOuFalhar(Long professorId);
+//     List<Professor> findAllBySala(Sala sala);
 
-    public Professor cadastrar(Professor professor);
+     Professor buscarOuFalhar(Long professorId);
 
-    public Professor atualizar(Professor professor);
+     Professor cadastrar(Professor professor);
+
+     Professor atualizar(Professor professor);
 
     @Transactional
-    public void ativar(Long professorId);
+     void ativar(Long professorId);
     @Transactional
-    public void desativar(Long professorId);
+     void desativar(Long professorId);
 
 }
