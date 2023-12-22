@@ -9,6 +9,8 @@ import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "GENAWS_TB_ALUNO")
@@ -40,13 +42,43 @@ public class Aluno {
     @JsonAlias({"notaSegundoSemestre", "nota_Segundo_Semestre","nota_segundo_semestre",})
     private Long notaSegundoSemestre;
 
-    @Column(name = "NOME_PROFESSOR", nullable = true)
-    @JsonAlias({"nomeProfessor", "nome_Professor","nomeprofessor",})
-    private String nomeProfessor;
+//    @Column(name = "NOME_PROFESSOR", nullable = true)
+//    @JsonAlias({"nomeProfessor", "nome_Professor","nomeprofessor",})
+//    private String nomeProfessor;
 
-    @Size(max = 100, min = 0)
-    @Column(name = "NUMERO_SALA", nullable = true)
-    private String numeroSala;
+//    @ManyToOne
+//    @JoinColumn(name = "professor_id")
+//    private Professor professorOrientador;
+
+    /**
+     * Muitos alunos estao associados a muitos professores diferentes
+     * em uma nova tabela, somente para esses relacionamentos
+     */
+    @ManyToMany
+    @JoinTable(name = "ALUNO_PROFESSOR",
+            joinColumns = @JoinColumn(name = "aluno_id"),
+            inverseJoinColumns = @JoinColumn(name = "professor_id"))
+    private List<Professor> professores;
+
+//    @ManyToOne
+//    @JoinColumn(name = "sala_id")
+//    private Sala sala;
+
+    /**
+     * Muitos alunos associados a muitas salas diferentes
+     * em uma nova tabela, somente para esses relacionamentos
+     */
+    @ManyToMany
+    @JoinTable(name = "ALUNO_SALA",
+            joinColumns = @JoinColumn(name = "aluno_id"),
+            inverseJoinColumns = @JoinColumn(name = "sala_id"))
+    private List<Sala> salas;
+
+
+
+//    @Size(max = 100, min = 0)
+//    @Column(name = "NUMERO_SALA", nullable = true)
+//    private String numeroSala;
 
     @Column(name = "IS_ATIVO", nullable = false, columnDefinition = "boolean default true")
     private Boolean isAtivo;

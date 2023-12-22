@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -30,6 +32,12 @@ public class Professor {
     @Column(name = "NOME_PROFESSOR", nullable = false, length = 100)
     @JsonAlias({"nomeProfessor", "nomeDoProfessor", "nome_Professor"})
     private String nomeProfessor;
+
+//    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
+//    private List<Sala> salas;
+
+    @OneToMany(mappedBy = "professor")
+    private List<Sala> salas;
 
     @Column(name = "IS_ATIVO", nullable = false, columnDefinition = "boolean default true")
     private Boolean isAtivo;

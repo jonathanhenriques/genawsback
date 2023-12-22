@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "GENAWS_TB_SALA")
@@ -22,6 +24,26 @@ public class Sala {
     @Column(name = "NUMERO_SALA", nullable = false, length = 100)
     @JsonAlias({"numeroeSala", "numerDaSala", "numero_sala"})
     private Long numeroSala;
+
+//    @ManyToOne
+//    @JoinColumn(name = "professor_id")
+//    private Professor professor;
+
+//    @ManyToMany
+//    @JoinTable(name = "SALA_PROFESSOR",
+//            joinColumns = @JoinColumn(name = "sala_id"),
+//            inverseJoinColumns = @JoinColumn(name = "professor_id"))
+//    private List<Professor> professores;
+
+    @ManyToOne
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
+
+    @ManyToMany(mappedBy = "salas")
+    private List<Aluno> alunos;
+
+//    @OneToMany(mappedBy = "sala", cascade = CascadeType.ALL)
+//    private List<Aluno> alunos;
 
 
     @Column(name = "IS_ATIVO", nullable = false, columnDefinition = "boolean default true")
