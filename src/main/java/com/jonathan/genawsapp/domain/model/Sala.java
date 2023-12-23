@@ -35,8 +35,7 @@ public class Sala {
 //            inverseJoinColumns = @JoinColumn(name = "professor_id"))
 //    private List<Professor> professores;
 
-    @ManyToOne
-    @JoinColumn(name = "professor_id")
+    @ManyToMany(mappedBy = "salas")
     private Professor professor;
 
     @ManyToMany(mappedBy = "salas")

@@ -31,8 +31,14 @@ CREATE TABLE GENAWS_ALUNO_PROFESSOR (
     PRIMARY KEY (aluno_id, professor_id)
 );
 
-CREATE TABLE GENAWS_SALA_PROFESSOR (
+--CREATE TABLE GENAWS_SALA_PROFESSOR (
+--    sala_id INT REFERENCES GENAWS_TB_SALA(id),
+--    professor_id INT REFERENCES GENAWS_TB_PROFESSOR(id),
+--    PRIMARY KEY (sala_id, professor_id)
+--);
+
+CREATE TABLE GENAWS_PROFESSOR_SALA (
+    aluno_id INT REFERENCES GENAWS_TB_PROFESSOR(id),
     sala_id INT REFERENCES GENAWS_TB_SALA(id),
-    professor_id INT REFERENCES GENAWS_TB_PROFESSOR(id),
-    PRIMARY KEY (sala_id, professor_id)
+    PRIMARY KEY (professor_id, sala_id)
 );

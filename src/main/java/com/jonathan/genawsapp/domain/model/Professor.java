@@ -36,7 +36,17 @@ public class Professor {
 //    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
 //    private List<Sala> salas;
 
-    @OneToMany(mappedBy = "professor")
+//    @OneToMany(mappedBy = "professor")
+//    private List<Sala> salas;
+
+    /**
+     * Muitos professores associados a muitas salas diferentes
+     * em uma nova tabela, somente para esses relacionamentos
+     */
+    @ManyToMany
+    @JoinTable(name = "PROFESSOR_SALA",
+            joinColumns = @JoinColumn(name = "professor_id"),
+            inverseJoinColumns = @JoinColumn(name = "sala_id"))
     private List<Sala> salas;
 
     @Column(name = "IS_ATIVO", nullable = false, columnDefinition = "boolean default true")
