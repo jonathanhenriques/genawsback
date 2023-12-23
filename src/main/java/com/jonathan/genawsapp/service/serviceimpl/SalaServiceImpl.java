@@ -28,6 +28,7 @@ public class SalaServiceImpl {
     }
 
     public Sala cadastrar(Sala sala){
+        sala.setIsAtivo(true);
         return salaRepository.save(sala);
     }
 

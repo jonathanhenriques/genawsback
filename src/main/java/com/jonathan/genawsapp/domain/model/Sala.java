@@ -36,7 +36,7 @@ public class Sala {
 //    private List<Professor> professores;
 
     @ManyToMany(mappedBy = "salas")
-    private Professor professor;
+    private List<Professor> professor;
 
     @ManyToMany(mappedBy = "salas")
     private List<Aluno> alunos;
@@ -45,7 +45,7 @@ public class Sala {
 //    private List<Aluno> alunos;
 
 
-    @Column(name = "IS_ATIVO", nullable = false, columnDefinition = "boolean default true")
+    @Column(name = "IS_ATIVO", nullable = true, columnDefinition = "boolean default true")
     private Boolean isAtivo;
 
     public void ativar(){

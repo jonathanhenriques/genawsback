@@ -55,7 +55,7 @@ public class Aluno {
      * em uma nova tabela, somente para esses relacionamentos
      */
     @ManyToMany
-    @JoinTable(name = "ALUNO_PROFESSOR",
+    @JoinTable(name = "GENAWS_ALUNO_PROFESSOR",
             joinColumns = @JoinColumn(name = "aluno_id"),
             inverseJoinColumns = @JoinColumn(name = "professor_id"))
     private List<Professor> professores;
@@ -69,7 +69,7 @@ public class Aluno {
      * em uma nova tabela, somente para esses relacionamentos
      */
     @ManyToMany
-    @JoinTable(name = "ALUNO_SALA",
+    @JoinTable(name = "GENAWS_ALUNO_SALA",
             joinColumns = @JoinColumn(name = "aluno_id"),
             inverseJoinColumns = @JoinColumn(name = "sala_id"))
     private List<Sala> salas;
@@ -80,7 +80,7 @@ public class Aluno {
 //    @Column(name = "NUMERO_SALA", nullable = true)
 //    private String numeroSala;
 
-    @Column(name = "IS_ATIVO", nullable = false, columnDefinition = "boolean default true")
+    @Column(name = "IS_ATIVO", nullable = true, columnDefinition = "boolean default true")
     private Boolean isAtivo;
 
     public void ativar(){

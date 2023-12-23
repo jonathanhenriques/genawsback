@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -39,17 +40,21 @@ public class Professor {
 //    @OneToMany(mappedBy = "professor")
 //    private List<Sala> salas;
 
+    @ManyToMany(mappedBy = "professores")
+    private Set<Aluno> alunos;
+
+
     /**
      * Muitos professores associados a muitas salas diferentes
      * em uma nova tabela, somente para esses relacionamentos
      */
     @ManyToMany
-    @JoinTable(name = "PROFESSOR_SALA",
+    @JoinTable(name = "GENAWS_PROFESSOR_SALA",
             joinColumns = @JoinColumn(name = "professor_id"),
             inverseJoinColumns = @JoinColumn(name = "sala_id"))
     private List<Sala> salas;
 
-    @Column(name = "IS_ATIVO", nullable = false, columnDefinition = "boolean default true")
+    @Column(name = "IS_ATIVO", nullable = true, columnDefinition = "boolean default true")
     private Boolean isAtivo;
 
     public void ativar(){

@@ -30,6 +30,7 @@ public class ProfessorServiceImpl {
     }
 
     public Professor cadastrar(Professor professor){
+        professor.setIsAtivo(true);
         return professorRepository.save(professor);
     }
 

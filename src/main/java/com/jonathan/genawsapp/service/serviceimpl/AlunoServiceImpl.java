@@ -32,7 +32,7 @@ public class AlunoServiceImpl {
     public Aluno cadastrar(Aluno aluno){
 
 
-
+        aluno.setIsAtivo(true);
 
         return alunoRepository.save(aluno);
     }
