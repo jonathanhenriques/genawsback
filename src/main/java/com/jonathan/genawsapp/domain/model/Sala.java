@@ -2,6 +2,7 @@ package com.jonathan.genawsapp.domain.model;
 
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -36,7 +37,8 @@ public class Sala {
 //    private List<Professor> professores;
 
     @ManyToMany(mappedBy = "salas")
-    private List<Professor> professor;
+    @JsonIgnoreProperties({"salas"})
+    private List<Professor> professores;
 
     @ManyToMany(mappedBy = "salas")
     private List<Aluno> alunos;

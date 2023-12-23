@@ -2,6 +2,7 @@ package com.jonathan.genawsapp.domain.model;
 
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -52,6 +53,7 @@ public class Professor {
     @JoinTable(name = "GENAWS_PROFESSOR_SALA",
             joinColumns = @JoinColumn(name = "professor_id"),
             inverseJoinColumns = @JoinColumn(name = "sala_id"))
+    @JsonIgnoreProperties({"professores"})
     private List<Sala> salas;
 
     @Column(name = "IS_ATIVO", nullable = true, columnDefinition = "boolean default true")
