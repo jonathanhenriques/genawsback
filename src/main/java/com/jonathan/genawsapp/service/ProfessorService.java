@@ -22,4 +22,6 @@ public interface ProfessorService {
     @Transactional
     void desativar(Long professorId);
 
+    Professor matriculaProfessorEmSala(Long professorId, Long salaId);
+
 }

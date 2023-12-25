@@ -9,7 +9,10 @@ import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -58,7 +61,7 @@ public class Aluno {
     @JoinTable(name = "GENAWS_ALUNO_PROFESSOR",
             joinColumns = @JoinColumn(name = "aluno_id"),
             inverseJoinColumns = @JoinColumn(name = "professor_id"))
-    private List<Professor> professores;
+    private List<Professor> professores = new ArrayList<>();
 
 //    @ManyToOne
 //    @JoinColumn(name = "sala_id")
@@ -72,7 +75,7 @@ public class Aluno {
     @JoinTable(name = "GENAWS_ALUNO_SALA",
             joinColumns = @JoinColumn(name = "aluno_id"),
             inverseJoinColumns = @JoinColumn(name = "sala_id"))
-    private List<Sala> salas;
+    private Set<Sala> salas = new HashSet<>();
 
 
 

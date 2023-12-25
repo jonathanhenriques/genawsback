@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -42,7 +43,7 @@ public class Professor {
 //    private List<Sala> salas;
 
     @ManyToMany(mappedBy = "professores")
-    private Set<Aluno> alunos;
+    private Set<Aluno> alunos = new HashSet<>();
 
 
     /**
@@ -54,7 +55,7 @@ public class Professor {
             joinColumns = @JoinColumn(name = "professor_id"),
             inverseJoinColumns = @JoinColumn(name = "sala_id"))
     @JsonIgnoreProperties({"professores"})
-    private List<Sala> salas;
+    private Set<Sala> salas = new HashSet<>();
 
     @Column(name = "IS_ATIVO", nullable = true, columnDefinition = "boolean default true")
     private Boolean isAtivo;

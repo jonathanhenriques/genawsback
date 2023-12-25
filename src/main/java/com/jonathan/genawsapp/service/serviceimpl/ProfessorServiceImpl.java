@@ -3,21 +3,25 @@ package com.jonathan.genawsapp.service.serviceimpl;
 import com.jonathan.genawsapp.domain.exception.ProfessorNaoEncontradoException;
 import com.jonathan.genawsapp.domain.model.Professor;
 import com.jonathan.genawsapp.repository.ProfessorRepository;
+import com.jonathan.genawsapp.service.MatriculaProfessorEmSalaService;
+import com.jonathan.genawsapp.service.ProfessorService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
-public class ProfessorServiceImpl {
+public class ProfessorServiceImpl implements ProfessorService {
 
-    @Autowired
-    ProfessorRepository professorRepository;
+    private final ProfessorRepository professorRepository;
 
 
-    @Autowired
-    AlunoServiceImpl alunoService;
+    private final AlunoServiceImpl alunoService;
+
+    private final MatriculaProfessorEmSalaService matriculaProfessorEmSala;
 
 
     public List<Professor> findAll(){
@@ -47,4 +51,13 @@ public class ProfessorServiceImpl {
     public void desativar(Long Id) {
         buscarOuFalhar(Id).inativar();
     }
+
+
+    public Professor matriculaProfessorEmSala(Long professorId, Long salaId){
+        return matriculaProfessorEmSala.matriculaProfessorEmSalaService(professorId, salaId);
+    }
+
+
+
+
 }

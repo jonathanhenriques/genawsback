@@ -8,7 +8,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -36,12 +38,12 @@ public class Sala {
 //            inverseJoinColumns = @JoinColumn(name = "professor_id"))
 //    private List<Professor> professores;
 
-    @ManyToMany(mappedBy = "salas")
+    @ManyToMany(mappedBy = "salas", cascade = CascadeType.PERSIST)
     @JsonIgnoreProperties({"salas"})
-    private List<Professor> professores;
+    private Set<Professor> professores = new HashSet<>();
 
     @ManyToMany(mappedBy = "salas")
-    private List<Aluno> alunos;
+    private Set<Aluno> alunos = new HashSet<>();
 
 //    @OneToMany(mappedBy = "sala", cascade = CascadeType.ALL)
 //    private List<Aluno> alunos;

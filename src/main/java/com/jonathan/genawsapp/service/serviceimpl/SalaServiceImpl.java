@@ -3,6 +3,7 @@ package com.jonathan.genawsapp.service.serviceimpl;
 import com.jonathan.genawsapp.domain.exception.SalaNaoEncontradoException;
 import com.jonathan.genawsapp.domain.model.Sala;
 import com.jonathan.genawsapp.repository.SalaRepository;
+import com.jonathan.genawsapp.service.SalaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class SalaServiceImpl {
+public class SalaServiceImpl implements SalaService {
 
     @Autowired
     SalaRepository salaRepository;
